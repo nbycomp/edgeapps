@@ -105,13 +105,13 @@ spec:
             protocol: UDP 
           volumeMounts:
             - name: tmp
-              mountPath: /tmp
+              mountPath: /var/tmp
             - name: certs
               mountPath: /root/certs/
       volumes:
         - name: tmp
           hostPath:
-            path: /tmp
+            path: /var/tmp
             type: Directory
         - name: config
           configMap:
