@@ -9,7 +9,7 @@ ENV no_proxy=$no_proxy,eaa.openness
 
 # Type of acceleration to be used in OpenVINO inference:
 # CPU | MYRIAD | HDDL | CPU_HDDL | CPU_MYRIAD
-ENV OPENVINO_ACCL=CPU
+ENV OPENVINO_ACCL=HDDL
 
 # hadolint ignore=DL3008,DL3009,DL3015
 RUN apk update && apk upgrade && \
