@@ -92,9 +92,7 @@ RUN mkdir $GOPATH
 
 
 # OpenVINO inference and forwarding
-RUN mkfifo vidfifo.mjpeg
 COPY start.sh ./
-COPY fwd.sh ./
 COPY cmd/ ./
 
 ENTRYPOINT ["./start.sh"]
