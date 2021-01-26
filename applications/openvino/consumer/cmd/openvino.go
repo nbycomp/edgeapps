@@ -57,7 +57,7 @@ func callOpenVINO(model string, accl string) {
 	// #nosec
 	cmd = exec.Command("taskset", "-c", openvinoTasksetCPU,
 		openvinoPath+openvinoCmd, "-d", accl,
-		"-i", "rtp://127.0.0.1:5000?overrun_nonfatal=1",
+		"-i", "/root/Rainy_Street.mp4",
 		"-m", modelXML)
 
 	stdout, _ := cmd.StdoutPipe()

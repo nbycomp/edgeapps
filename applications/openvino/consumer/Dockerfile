@@ -60,6 +60,10 @@ RUN /bin/bash -c "source /opt/intel/openvino/bin/setupvars.sh \
 RUN wget -r -np -nH --cut-dirs=5 -R index.html* $MODEL1_LINK
 RUN wget -r -np -nH --cut-dirs=5 -R index.html* $MODEL2_LINK
 
+#Download input video
+RUN wget --no-check-certificate https://storage.googleapis.com/coverr-main/zip/Rainy_Street.zip
+RUN unzip Rainy_Street.zip
+
 # Rebuilding libusb without UDEV support -- required for Intel Movidius Stick
 RUN cd /tmp && \
 	wget https://github.com/libusb/libusb/archive/v1.0.22.zip && \
