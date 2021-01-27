@@ -1,6 +1,6 @@
---- main.cpp	2021-01-25 14:53:09.017136809 +0100
-+++ "main copy.cpp"	2021-01-26 17:59:05.694205478 +0100
-@@ -232,7 +232,7 @@
+--- main.cpp	2021-01-27 11:46:31.676407705 +0100
++++ "main copy.cpp"	2021-01-27 11:48:25.502476639 +0100
+@@ -244,7 +244,7 @@
          slog::info << "Start inference " << slog::endl;
  
          bool isLastFrame = false;
@@ -9,12 +9,21 @@
          bool isModeChanged = false;  // set to TRUE when execution mode is changed (SYNC<->ASYNC)
  
          typedef std::chrono::duration<double, std::ratio<1, 1000>> ms;
-@@ -345,7 +345,7 @@
+@@ -331,7 +331,7 @@
+                 const float *detections = async_infer_request_curr->GetBlob(outputName)->buffer().as<PrecisionTrait<Precision::FP32>::value_type*>();
+                 for (int i = 0; i < maxProposalCount; i++) {
+                     float image_id = detections[i * objectSize + 0];
+-                    if (image_id < 0) {
++                    if (image_id != 0) {
+                         break;
                      }
-                 }
+ 
+@@ -363,7 +363,7 @@
              }
--            cv::imshow("Detection results", curr_frame);
-+            //cv::imshow("Detection results", curr_frame);
+ 
+             if (!FLAGS_no_show) {
+-                cv::imshow("Detection results", curr_frame);
++                //cv::imshow("Detection results", curr_frame);
+             }
  
              t1 = std::chrono::high_resolution_clock::now();
-             ocv_render_time = std::chrono::duration_cast<ms>(t1 - t0).count();
